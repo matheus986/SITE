@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matheus986.github.io/SITE/sitemap.xml
