@@ -97,23 +97,7 @@
         </div>
         <div class="hero-shade"></div>
         <div class="hero-content wrap">
-          <p class="eyebrow">
-            <span class="tiny-cross" aria-hidden="true">+</span> CINEMATOGRAFIA
-            AÉREA · FPV
-          </p>
           <h1 id="hero-title">UM NOVO<br />PONTO DE <em>VISTA.</em></h1>
-          <div class="hero-details">
-            <p>Movimento que prende o olhar.<br />Imagens que fazem sentir.</p>
-            <button
-              class="button button-light"
-              type="button"
-              data-film
-              data-start="0"
-            >
-              <span class="play-small" aria-hidden="true">▶</span> Assistir ao
-              showreel <span class="duration">01:00</span>
-            </button>
-          </div>
         </div>
         <div class="hero-bottom wrap">
           <a href="#portfolio" class="explore"
@@ -136,7 +120,6 @@
       >
         <div class="wrap">
           <div class="section-heading">
-            <p class="eyebrow section-index">01 / PORTFÓLIO</p>
             <h2 id="portfolio-title">
               NÃO É SÓ VER.<br />É <span class="muted-heading">ESTAR LÁ.</span>
             </h2>
@@ -232,7 +215,6 @@
       >
         <div class="wrap">
           <div class="section-heading">
-            <p class="eyebrow section-index">02 / O QUE FAZEMOS</p>
             <h2 id="services-title">
               SUA VISÃO.<br /><span class="muted-heading">NOSSO VOO.</span>
             </h2>
@@ -305,15 +287,16 @@
             <article class="service">
               <div class="service-image">
                 <img
-                  src="custom-640.webp"
+                  class="live-drone-photo"
+                  src="live-drone-front-640.webp"
                   srcset="
-                    custom-640.webp   640w,
-                    custom-1200.webp 1200w
+                    live-drone-front-640.webp   640w,
+                    live-drone-front-1200.webp 1200w
                   "
                   sizes="(max-width: 760px) 90vw, 30vw"
-                  width="4256"
-                  height="2848"
-                  alt="Detalhe de uma câmera montada em drone para uma produção"
+                  width="2252"
+                  height="4000"
+                  alt="Drone com câmera e gimbal sobre um deck à beira do lago"
                   loading="lazy"
                 /><span>03</span>
               </div>
@@ -344,17 +327,18 @@
           <div class="pilot-visual">
             <div class="pilot-photo">
               <img
-                src="pilot-reference.png"
-                width="1622"
-                height="811"
-                alt="Matheus Lucas com seu drone FPV em frente a uma cachoeira"
+                src="matheus-pilot-1200.webp"
+                srcset="matheus-pilot-640.webp 640w, matheus-pilot-1200.webp 1200w"
+                sizes="(max-width: 760px) 90vw, 45vw"
+                width="2667"
+                height="4000"
+                alt="Matheus Lucas com óculos FPV, segurando seu drone e controle"
                 loading="lazy"
               />
             </div>
             <span class="photo-note">MATHEUS LUCAS / PILOTO & ENGENHEIRO</span>
           </div>
           <div class="pilot-copy">
-            <p class="eyebrow">03 / QUEM ESTÁ NO CONTROLE</p>
             <h2 id="pilot-title">
               OLHAR CRIATIVO.<br /><span class="muted-heading"
                 >PRECISÃO TÉCNICA.</span
@@ -374,13 +358,6 @@
               desenvolver soluções para produções complexas — sempre em sintonia
               com o que a sua história precisa contar.
             </p>
-            <div class="pilot-facts">
-              <div><strong>DESDE 2016</strong><span>Vivendo o FPV</span></div>
-              <div>
-                <strong>CRIAÇÃO + ENGENHARIA</strong
-                ><span>Do conceito ao voo</span>
-              </div>
-            </div>
             <a href="#contato" class="text-link"
               >Vamos tirar sua ideia do papel
               <span aria-hidden="true">↗</span></a
@@ -402,7 +379,6 @@
           loading="lazy"
         />
         <div class="wrap contact-content">
-          <p class="eyebrow">04 / SEU PRÓXIMO PROJETO COMEÇA AQUI</p>
           <h2 id="contact-title">VAMOS CRIAR<br />O PRÓXIMO <em>PLANO?</em></h2>
           <p>
             Conte sua ideia. Vamos encontrar<br />o melhor ponto de vista para
@@ -421,7 +397,8 @@
       </section>
     </main>
     <footer class="footer">
-      <div class="wrap footer-main">
+      <div class="wrap footer-bottom">
+        <span>© <span id="year">2026</span> Midnight Aerials</span>
         <a
           class="brand"
           href="#inicio"
@@ -433,16 +410,7 @@
             alt="Midnight Aerials"
             loading="lazy"
         /></a>
-        <p>Novas perspectivas.<br />Imagens que ficam.</p>
-        <div class="footer-links">
-          <a href="mailto:matheuslcsalves@gmail.com"
-            >E-mail <span aria-hidden="true">↗</span></a
-          ><a href="tel:+5561999405674">(61) 99940-5674</a>
-        </div>
-      </div>
-      <div class="wrap footer-bottom">
-        <span>© <span id="year">2026</span> Midnight Aerials</span
-        ><a href="#inicio">VOLTAR AO TOPO ↑</a>
+        <a href="#inicio" class="back-to-top">VOLTAR AO TOPO ↑</a>
       </div>
     </footer>
     <a
