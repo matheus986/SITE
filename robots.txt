@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://matheus986.github.io/SITE/sitemap.xml
+Sitemap: https://midnightaerials.com/sitemap.xml
