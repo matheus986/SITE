@@ -159,8 +159,30 @@ svg {
 .desktop-nav {
   display: flex;
   gap: 32px;
-  margin-left: auto;
+  margin-left: 0;
   font-size: 0.875rem;
+}
+.header-social {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.header-social a,
+.contact-social a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 44px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+.header-social a:hover,
+.header-social a:focus-visible,
+.contact-social a:hover,
+.contact-social a:focus-visible {
+  background: #ffffff20;
 }
 .desktop-nav a {
   position: relative;
@@ -517,6 +539,14 @@ svg {
 .service:hover .service-image img {
   transform: scale(1.04);
 }
+.service-image .cinelifter-photo {
+  object-position: 84% center;
+  transform: scale(1.15);
+  transform-origin: 80% 55%;
+}
+.service:hover .service-image .cinelifter-photo {
+  transform: scale(1.15);
+}
 .service-image .live-drone-photo {
   object-fit: cover;
   object-position: center 60%;
@@ -641,7 +671,33 @@ svg {
 }
 .pilot-copy .text-link {
   display: inline-flex;
-  margin-top: 10px;
+  margin-top: 0;
+}
+.pilot-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 28px;
+}
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid #10111040;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.instagram-link:hover,
+.instagram-link:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
 }
 .contact {
   position: relative;
@@ -693,6 +749,13 @@ svg {
 }
 .contact-email:hover {
   border-color: white;
+}
+.contact-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
 }
 .footer {
   padding-top: 55px;
@@ -810,13 +873,16 @@ dialog video {
   }
   .site-header {
     padding-inline: 36px;
-    gap: 25px;
+    gap: 14px;
+  }
+  .site-header .brand {
+    width: 170px;
   }
   .brand {
     width: 205px;
   }
   .desktop-nav {
-    gap: 22px;
+    gap: 16px;
   }
   .section-heading {
     grid-template-columns: 1fr 1fr;
@@ -874,7 +940,7 @@ dialog video {
     display: none;
   }
   .header-contact {
-    margin-left: auto;
+    margin-left: 0;
     padding: 10px 15px;
     gap: 15px;
     font-size: 0.8125rem;
@@ -1245,10 +1311,19 @@ dialog video {
   }
 }
 @media (max-width: 480px) {
+  .site-header {
+    gap: 8px;
+  }
+  .site-header .brand {
+    width: clamp(120px, 34vw, 160px);
+  }
+  .header-social {
+    gap: 0;
+  }
   .header-contact {
     display: none;
   }
   .menu-toggle {
-    margin-left: auto;
+    margin-left: 0;
   }
 }
