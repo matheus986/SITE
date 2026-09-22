@@ -8,7 +8,7 @@
     requestAnimationFrame(() => document.body.classList.add("is-ready")),
   );
   const revealTargets = document.querySelectorAll(
-    ".clients-bar, .portfolio .section-heading, .film-card, .service, .pilot-grid, .clients-bar, .contact-image, .contact-content",
+    ".clients-bar, .portfolio .section-heading, .portfolio-reel, .service, .pilot-grid, .contact-image, .contact-content",
   );
   if (reduceMotion.matches || !("IntersectionObserver" in window)) {
     revealTargets.forEach((target) => target.classList.add("is-revealed"));

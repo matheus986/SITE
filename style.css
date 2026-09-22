@@ -106,6 +106,24 @@ p {
 svg {
   display: block;
 }
+.ui-arrow {
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+.ui-arrow path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.ui-arrow-inline {
+  display: inline-block;
+  vertical-align: -0.16em;
+}
 .wrap {
   width: calc(100% - 112px);
   max-width: 1440px;
@@ -301,6 +319,10 @@ body.is-ready .hero-bottom {
   line-height: 1;
   transition: transform 0.25s, background-color 0.25s;
 }
+.header-contact-arrow .ui-arrow {
+  width: 18px;
+  height: 18px;
+}
 .header-contact:hover .header-contact-arrow {
   color: var(--paper);
   background: var(--ink);
@@ -445,7 +467,8 @@ body.is-ready .hero-bottom {
 }
 .explore span {
   display: inline-block;
-  font-size: 1.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
   animation: explore-arrow-bounce 1.5s ease-in-out infinite;
 }
 @keyframes explore-arrow-bounce {
@@ -505,13 +528,17 @@ body.is-ready .hero-bottom {
 }
 .film-strip {
   display: flex;
+  align-items: flex-start;
   gap: 24px;
   min-width: 0;
   overflow-x: auto;
+  overflow-y: hidden;
   padding: 10px 2px 18px;
   background: var(--paper);
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 .film-strip::-webkit-scrollbar {
@@ -520,6 +547,7 @@ body.is-ready .hero-bottom {
 .film-strip > button {
   flex: 0 0 clamp(280px, 31vw, 440px);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 .film-card {
   display: block;
@@ -533,7 +561,6 @@ body.is-ready .hero-bottom {
 .film-card[hidden] {
   display: none;
 }
-.film-card:hover,
 .film-card:focus-visible {
   transform: translateY(-5px);
 }
@@ -558,7 +585,6 @@ body.is-ready .hero-bottom {
   object-fit: cover;
   transition: transform 0.65s ease;
 }
-.film-card:hover .film-image img,
 .film-card:focus-visible .film-image img {
   transform: scale(1.08);
 }
@@ -584,13 +610,26 @@ body.is-ready .hero-bottom {
   -webkit-line-clamp: 1;
   transition: max-height 0.25s ease;
 }
-.film-card:hover .film-title,
 .film-card:focus-visible .film-title {
   -webkit-line-clamp: 3;
 }
+@media (hover: hover) and (pointer: fine) {
+  .film-card:hover {
+    transform: translateY(-5px);
+  }
+  .film-card:hover .film-image img {
+    transform: scale(1.08);
+  }
+  .film-card:hover .film-title {
+    -webkit-line-clamp: 3;
+  }
+}
 .film-arrow {
   flex-shrink: 0;
-  font-size: 1.2rem;
+}
+.film-arrow .ui-arrow {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 .reel-nav {
   position: absolute;
@@ -723,8 +762,9 @@ body.is-ready .hero-bottom {
 .text-link:hover {
   gap: 38px;
 }
-.text-link > span {
-  font-size: 1.25rem;
+.text-link > .ui-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 .service .text-link {
   margin-top: auto;
@@ -852,6 +892,10 @@ body.is-ready .hero-bottom {
   background: var(--ink);
   color: var(--paper);
   border-color: var(--ink);
+}
+.instagram-link .ui-arrow {
+  width: 1rem;
+  height: 1rem;
 }
 .clients {
   overflow: hidden;
@@ -1017,8 +1061,15 @@ body.is-ready .hero-bottom {
   letter-spacing: 0.06em;
 }
 .footer-bottom .back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   justify-self: end;
   text-align: right;
+}
+.back-to-top .ui-arrow {
+  width: 1rem;
+  height: 1rem;
 }
 .mobile-cta {
   display: none;
@@ -1207,6 +1258,11 @@ dialog video {
     font-size: 1.1rem;
     padding: 12px;
   }
+  .mobile-nav a:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
   .hero {
     height: 100svh;
     min-height: 690px;
@@ -1282,8 +1338,11 @@ dialog video {
   .portfolio-categories {
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
     margin: -8px 0 22px;
     padding-bottom: 3px;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   .portfolio-categories::-webkit-scrollbar {
@@ -1443,8 +1502,9 @@ dialog video {
   .mobile-cta.is-visible {
     transform: translateY(0);
   }
-  .mobile-cta > span {
-    font-size: 1.3rem;
+  .mobile-cta > .ui-arrow {
+    width: 1.3rem;
+    height: 1.3rem;
   }
   .dialog-open .mobile-cta {
     display: none;
