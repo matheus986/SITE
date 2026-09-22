@@ -4,6 +4,31 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const connection = navigator.connection;
   let heroVisible = true;
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => document.body.classList.add("is-ready")),
+  );
+  const revealTargets = document.querySelectorAll(
+    ".clients-bar, .portfolio .section-heading, .film-card, .service, .pilot-grid, .clients-bar, .contact-image, .contact-content",
+  );
+  if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+    revealTargets.forEach((target) => target.classList.add("is-revealed"));
+  } else {
+    revealTargets.forEach((target, index) => {
+      target.classList.add("reveal-on-scroll");
+      target.style.transitionDelay = `${Math.min(index % 6, 4) * 70}ms`;
+    });
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 },
+    );
+    revealTargets.forEach((target) => revealObserver.observe(target));
+  }
   function loadHero() {
     if (hero.hasAttribute("src")) return;
     hero.src = window.matchMedia("(max-width: 760px)").matches
