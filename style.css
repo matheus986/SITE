@@ -923,34 +923,37 @@ body.is-ready .hero-bottom {
   mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 .client-logo-track {
+  --client-logo-half-gap: 18px;
   display: flex;
   align-items: center;
-  gap: clamp(14px, 2vw, 28px);
+  gap: 36px;
   width: max-content;
-  animation: client-logo-scroll 42s linear infinite;
+  animation: client-logo-scroll 90s linear infinite;
 }
 .client-logo-set {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 2vw, 28px);
+  gap: 36px;
 }
 .client-logo {
   display: grid;
   place-items: center;
-  flex: 0 0 clamp(128px, 13vw, 188px);
-  min-height: 62px;
+  flex: 0 0 172px;
+  width: 172px;
+  height: 64px;
+  padding-inline: 8px;
 }
 .client-logo img {
   display: block;
   width: auto;
-  max-width: 100%;
+  max-width: 156px;
   height: auto;
-  max-height: 58px;
+  max-height: 56px;
   object-fit: contain;
 }
 @keyframes client-logo-scroll {
   to {
-    transform: translateX(calc(-50% - clamp(7px, 1vw, 14px)));
+    transform: translateX(calc(-50% - var(--client-logo-half-gap)));
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1419,12 +1422,22 @@ dialog video {
   .client-logo-carousel {
     mask-image: linear-gradient(90deg, transparent, #000 11%, #000 89%, transparent);
   }
+  .client-logo-track,
+  .client-logo-set {
+    gap: 24px;
+  }
+  .client-logo-track {
+    --client-logo-half-gap: 12px;
+  }
   .client-logo {
-    flex-basis: 128px;
-    min-height: 54px;
+    flex-basis: 136px;
+    width: 136px;
+    height: 56px;
+    padding-inline: 7px;
   }
   .client-logo img {
-    max-height: 50px;
+    max-width: 122px;
+    max-height: 48px;
   }
   .pilot-copy h2 {
     font-size: clamp(3.1rem, 10.3vw, 5rem);
