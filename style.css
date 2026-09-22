@@ -112,7 +112,7 @@ svg {
   margin-inline: auto;
 }
 .section-pad {
-  padding-block: 118px;
+  padding-block: 84px;
 }
 .eyebrow {
   font-size: 0.75rem;
@@ -149,7 +149,7 @@ svg {
   align-items: center;
   gap: 36px;
   padding-inline: 56px;
-  border-bottom: 1px solid #ffffff30;
+  border-bottom: 0;
 }
 .brand {
   width: 232px;
@@ -337,10 +337,9 @@ svg {
   right: 0;
   bottom: 27px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  border-top: 1px solid #ffffff45;
-  padding-top: 21px;
+  padding-top: 0;
 }
 .explore {
   font-size: 0.75rem;
@@ -353,27 +352,12 @@ svg {
 .explore span {
   font-size: 1.2rem;
 }
-.video-toggle {
-  border: 0;
-  background: transparent;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 10px 0 10px 12px;
-  font-size: 0.75rem;
-}
-.video-toggle[hidden] {
-  display: none;
-}
-.video-symbol {
-  font-size: 0.75rem;
-}
 .section-heading {
   display: grid;
   grid-template-columns: 2.25fr 1fr;
   gap: 40px;
   align-items: start;
-  margin-bottom: 60px;
+  margin-bottom: 44px;
 }
 .section-index {
   padding-top: 9px;
@@ -384,129 +368,160 @@ svg {
   padding-top: 8px;
   color: #565950;
 }
-.reel-cover {
-  position: relative;
-  display: block;
-  width: 100%;
-  padding: 0;
-  background: #101110;
-  border: 0;
-  overflow: hidden;
-  aspect-ratio: 2.14;
-  color: white;
-  text-align: left;
-}
-.reel-cover:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, #0009, transparent 60%, #0005);
-}
-.reel-cover > img {
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s;
-}
-.reel-cover:hover > img {
-  transform: scale(1.025);
-}
-.reel-topline,
-.reel-bottomline {
-  position: absolute;
-  z-index: 1;
-  left: 34px;
-  right: 34px;
+.portfolio-categories {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: -18px 0 28px;
 }
-.reel-topline {
-  top: 26px;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+.portfolio-filter {
+  border: 1px solid #10111028;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: transparent;
+  color: #565950;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
-.reel-bottomline {
-  bottom: 30px;
-  font-size: 0.8125rem;
-  line-height: 1.7;
-  letter-spacing: 0.08em;
+.portfolio-filter:hover,
+.portfolio-filter:focus-visible,
+.portfolio-filter.is-active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
 }
-.reel-bottomline strong {
-  font-weight: 600;
-}
-.play-circle {
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 90px;
-  height: 90px;
-  border: 1px solid #fff9;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  padding-left: 4px;
-  font-size: 1rem;
-  background: #ffffff15;
-  backdrop-filter: blur(8px);
-  transition:
-    background 0.25s,
-    scale 0.25s;
-}
-.reel-cover:hover .play-circle {
-  background: #ffffff35;
-  scale: 1.06;
-}
-.circle-arrow {
-  display: grid;
-  place-items: center;
-  width: 45px;
-  height: 45px;
-  border: 1px solid #ffffff80;
-  border-radius: 50%;
-  font-size: 1.4rem;
+.portfolio-reel {
+  position: relative;
+  min-width: 0;
 }
 .film-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 24px;
-  margin-top: 27px;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 10px 2px 18px;
+  background: var(--paper);
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.film-strip::-webkit-scrollbar {
+  display: none;
 }
 .film-strip > button {
+  flex: 0 0 clamp(280px, 31vw, 440px);
+  scroll-snap-align: start;
+}
+.film-card {
   display: block;
   border: 0;
   padding: 0;
   background: none;
   color: inherit;
   text-align: left;
+  transition: transform 0.35s ease;
+}
+.film-card[hidden] {
+  display: none;
+}
+.film-card:hover,
+.film-card:focus-visible {
+  transform: translateY(-5px);
 }
 .film-image {
+  position: relative;
   display: block;
-  aspect-ratio: 1.88;
+  aspect-ratio: 1.62;
   overflow: hidden;
+  border-radius: 18px;
   background: #353835;
+  box-shadow: none;
+}
+.film-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 38%, #050705d9 100%);
+  pointer-events: none;
 }
 .film-image img {
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s;
+  transition: transform 0.65s ease;
 }
-.film-strip button:hover img {
-  transform: scale(1.05);
+.film-card:hover .film-image img,
+.film-card:focus-visible .film-image img {
+  transform: scale(1.08);
 }
 .film-caption {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0;
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 12px;
-  align-items: center;
+  gap: 14px;
+  min-height: 48%;
+  padding: 36px 20px 17px;
+  color: white;
   font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.5;
-  padding-top: 15px;
+  font-weight: 700;
+  line-height: 1.45;
 }
-.film-caption > span:last-child {
+.film-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  transition: max-height 0.25s ease;
+}
+.film-card:hover .film-title,
+.film-card:focus-visible .film-title {
+  -webkit-line-clamp: 3;
+}
+.film-arrow {
+  flex-shrink: 0;
   font-size: 1.2rem;
+}
+.reel-nav {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ink);
+  font-size: 1.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: none;
+  transition: opacity 0.25s;
+}
+.reel-nav-prev {
+  left: 0;
+  background: linear-gradient(90deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 85%, transparent) 35%, transparent 100%);
+}
+.reel-nav-next {
+  right: 0;
+  background: linear-gradient(270deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 85%, transparent) 35%, transparent 100%);
+}
+.portfolio-reel:hover .reel-nav.is-available,
+.portfolio-reel:focus-within .reel-nav.is-available {
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (hover: none) {
+  .reel-nav.is-available {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 .services .section-intro {
   color: #acaea7;
@@ -518,6 +533,7 @@ svg {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  row-gap: 56px;
 }
 .service {
   display: flex;
@@ -526,10 +542,11 @@ svg {
 }
 .service-image {
   position: relative;
-  aspect-ratio: 1.25;
+  aspect-ratio: 1.5;
   width: 100%;
   overflow: hidden;
   background: #20231d;
+  border-radius: 18px;
 }
 .service-image img {
   height: 100%;
@@ -541,15 +558,24 @@ svg {
 }
 .service-image .cinelifter-photo {
   object-position: 84% center;
-  transform: scale(1.15);
+  transform: scale(1.25);
   transform-origin: 80% 55%;
 }
 .service:hover .service-image .cinelifter-photo {
-  transform: scale(1.15);
+  transform: scale(1.28);
 }
 .service-image .live-drone-photo {
   object-fit: cover;
   object-position: center 60%;
+}
+.service-image .sub250-photo {
+  object-position: center 56%;
+}
+.service-image .dji-photo {
+  object-position: center center;
+}
+.service-image .fpv-photo {
+  object-position: center center;
 }
 .service-image > span {
   position: absolute;
@@ -609,6 +635,9 @@ svg {
   gap: clamp(50px, 8vw, 135px);
   align-items: center;
 }
+.pilot {
+  padding-bottom: 46px;
+}
 .pilot-visual {
   position: relative;
 }
@@ -617,6 +646,7 @@ svg {
   position: relative;
   overflow: hidden;
   background: #8d8b80;
+  border-radius: 18px;
 }
 .pilot-photo img {
   width: 100%;
@@ -681,6 +711,13 @@ svg {
   gap: 20px;
   margin-top: 28px;
 }
+.pilot-copy .pilot-motto {
+  margin-top: 24px;
+  margin-bottom: -10px;
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
 .instagram-link {
   display: inline-flex;
   align-items: center;
@@ -698,6 +735,65 @@ svg {
   background: var(--ink);
   color: var(--paper);
   border-color: var(--ink);
+}
+.clients {
+  overflow: hidden;
+  border-bottom: 1px solid #1011101f;
+}
+.clients-bar {
+  display: grid;
+  gap: 22px;
+  min-height: 160px;
+  padding-block: 26px;
+}
+.clients-title {
+  color: #666a60;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.5;
+  text-align: center;
+}
+.client-logo-carousel {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.client-logo-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 28px);
+  width: max-content;
+  animation: client-logo-scroll 42s linear infinite;
+}
+.client-logo-set {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 28px);
+}
+.client-logo {
+  display: grid;
+  place-items: center;
+  flex: 0 0 clamp(128px, 13vw, 188px);
+  min-height: 62px;
+}
+.client-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 58px;
+  object-fit: contain;
+}
+@keyframes client-logo-scroll {
+  to {
+    transform: translateX(calc(-50% - clamp(7px, 1vw, 14px)));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .client-logo-track {
+    animation: none;
+  }
 }
 .contact {
   position: relative;
@@ -896,7 +992,10 @@ dialog video {
     justify-self: end;
   }
   .section-pad {
-    padding-block: 90px;
+    padding-block: 68px;
+  }
+  .pilot {
+    padding-bottom: 38px;
   }
   .hero-details {
     gap: 45px;
@@ -926,7 +1025,10 @@ dialog video {
     width: calc(100% - 40px);
   }
   .section-pad {
-    padding-block: 72px;
+    padding-block: 52px;
+  }
+  .pilot {
+    padding-bottom: 28px;
   }
   .site-header {
     height: 88px;
@@ -1021,24 +1123,12 @@ dialog video {
   }
   .hero-bottom {
     bottom: 23px;
-    padding-top: 14px;
+    padding-top: 0;
   }
   .explore {
     font-size: 0.75rem;
     letter-spacing: 0.03em;
     gap: 12px;
-  }
-  .video-state {
-    display: none;
-  }
-  .video-toggle {
-    width: 44px;
-    height: 44px;
-    justify-content: center;
-    padding: 0;
-  }
-  .video-symbol {
-    font-size: 0.8125rem;
   }
   .hero-shade {
     background:
@@ -1070,60 +1160,53 @@ dialog video {
     justify-self: start;
     padding: 0;
   }
-  .reel-cover {
-    aspect-ratio: 1.35;
+  .portfolio-categories {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: -8px 0 22px;
+    padding-bottom: 3px;
+    scrollbar-width: none;
   }
-  .reel-topline,
-  .reel-bottomline {
-    left: 20px;
-    right: 20px;
+  .portfolio-categories::-webkit-scrollbar {
+    display: none;
   }
-  .reel-topline {
-    top: 19px;
-    font-size: 0.75rem;
-    letter-spacing: 0.03em;
-  }
-  .reel-bottomline {
-    bottom: 18px;
+  .portfolio-filter {
+    flex-shrink: 0;
+    padding: 9px 14px;
     font-size: 0.75rem;
   }
-  .play-circle {
-    width: 68px;
-    height: 68px;
-    font-size: 0.8125rem;
+  .portfolio-reel {
+    margin-inline: -2px;
   }
-  .circle-arrow {
-    width: 34px;
-    height: 34px;
-    font-size: 1.2rem;
+  .reel-nav {
+    width: 52px;
+    font-size: 1rem;
   }
   .film-strip {
-    gap: 18px;
-    grid-template-columns: 1fr;
-    margin-top: 25px;
+    gap: 16px;
+    margin-top: 0;
+    padding-bottom: 10px;
   }
   .film-strip > button {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 20px;
-    align-items: center;
-    padding-bottom: 18px;
-    border-bottom: 1px solid #10111025;
+    display: block;
+    flex-basis: min(82vw, 360px);
+    padding-bottom: 0;
+    border-bottom: 0;
   }
   .film-image {
-    aspect-ratio: 1.55;
+    aspect-ratio: 1.52;
   }
   .film-caption {
     font-size: 0.875rem;
-    padding: 0;
+    padding: 32px 16px 14px;
     gap: 10px;
   }
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 36px;
   }
   .service-image {
-    aspect-ratio: 1.4;
+    aspect-ratio: 1.55;
   }
   .service-tag {
     margin-top: 23px;
@@ -1149,6 +1232,21 @@ dialog video {
   }
   .pilot-photo {
     aspect-ratio: 694/770;
+  }
+  .clients-bar {
+    gap: 18px;
+    min-height: 0;
+    padding-block: 34px;
+  }
+  .client-logo-carousel {
+    mask-image: linear-gradient(90deg, transparent, #000 11%, #000 89%, transparent);
+  }
+  .client-logo {
+    flex-basis: 128px;
+    min-height: 54px;
+  }
+  .client-logo img {
+    max-height: 50px;
   }
   .pilot-copy h2 {
     font-size: clamp(3.1rem, 10.3vw, 5rem);
@@ -1277,12 +1375,6 @@ dialog video {
   }
   .pilot-facts {
     flex-direction: column;
-  }
-  .reel-topline {
-    font-size: 0.75rem;
-  }
-  .reel-topline > span:last-child {
-    display: none;
   }
   .footer-bottom {
     font-size: 0.75rem;

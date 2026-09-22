@@ -1,10 +1,8 @@
 (() => {
   "use strict";
   const hero = document.querySelector("#hero-video");
-  const toggle = document.querySelector("#video-toggle");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const connection = navigator.connection;
-  let manuallyPaused = false;
   let heroVisible = true;
   function loadHero() {
     if (hero.hasAttribute("src")) return;
@@ -13,44 +11,21 @@
       : "hero-desktop.mp4";
     hero.load();
   }
-  function reflectPlayback() {
-    const playing = !hero.paused;
-    toggle.setAttribute(
-      "aria-label",
-      playing ? "Pausar vídeo de fundo" : "Reproduzir vídeo de fundo",
-    );
-    toggle.querySelector(".video-symbol").textContent = playing ? "Ⅱ" : "▶";
-    toggle.querySelector(".video-state").textContent = playing
-      ? "Pausar fundo"
-      : "Reproduzir fundo";
-  }
   function playHero() {
     loadHero();
-    hero.play().catch(reflectPlayback);
+    hero.play().catch(() => {
+      /* O poster continua sendo exibido se a reprodução automática for bloqueada. */
+    });
   }
-  hero.addEventListener("playing", () => {
-    hero.classList.add("is-playing");
-    reflectPlayback();
-  });
-  hero.addEventListener("pause", reflectPlayback);
+  hero.addEventListener("playing", () => hero.classList.add("is-playing"));
   hero.addEventListener("error", () => {
     hero.classList.remove("is-playing");
-    toggle.hidden = true;
-  });
-  toggle.addEventListener("click", () => {
-    if (hero.paused) {
-      manuallyPaused = false;
-      playHero();
-    } else {
-      manuallyPaused = true;
-      hero.pause();
-    }
   });
   if (!reduceMotion.matches && !connection?.saveData)
     window.addEventListener(
       "load",
       () => {
-        if (heroVisible && !document.hidden && !manuallyPaused) playHero();
+        if (heroVisible && !document.hidden) playHero();
       },
       { once: true },
     );
@@ -86,12 +61,56 @@
     });
   const dialog = document.querySelector("#film-dialog");
   const film = document.querySelector("#showreel");
+  const filmStrip = document.querySelector(".film-strip");
+  const reelControls = document.querySelectorAll("[data-carousel]");
+  const portfolioFilters = document.querySelectorAll(".portfolio-filter");
+  function updateReelControls() {
+    if (!filmStrip) return;
+    const maxScroll = Math.max(0, filmStrip.scrollWidth - filmStrip.clientWidth);
+    const visibleCards = filmStrip.querySelectorAll(".film-card:not([hidden])");
+    const hasOverflow = visibleCards.length > 1 && maxScroll > 2;
+    const canGoPrev = hasOverflow && filmStrip.scrollLeft > 2;
+    const canGoNext = hasOverflow && filmStrip.scrollLeft < maxScroll - 2;
+    reelControls.forEach((control) => {
+      const isPrev = control.dataset.carousel === "prev";
+      control.classList.toggle("is-available", isPrev ? canGoPrev : canGoNext);
+    });
+  }
+  portfolioFilters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      const category = filter.dataset.category;
+      portfolioFilters.forEach((button) => {
+        const active = button === filter;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
+      filmStrip.querySelectorAll(".film-card").forEach((card) => {
+        card.hidden = category !== "all" && card.dataset.category !== category;
+      });
+      filmStrip.scrollTo({ left: 0, behavior: "auto" });
+      requestAnimationFrame(() => requestAnimationFrame(updateReelControls));
+    });
+  });
+  reelControls.forEach((control) => {
+    control.addEventListener("click", () => {
+      const direction = control.dataset.carousel === "prev" ? -1 : 1;
+      const card = filmStrip.querySelector(".film-card:not([hidden])");
+      if (!card) return;
+      const gap = Number.parseFloat(getComputedStyle(filmStrip).gap) || 0;
+      filmStrip.scrollBy({
+        left: direction * ((card?.getBoundingClientRect().width || 320) + gap),
+        behavior: "smooth",
+      });
+    });
+  });
+  filmStrip?.addEventListener("scroll", updateReelControls, { passive: true });
+  window.addEventListener("resize", updateReelControls);
+  updateReelControls();
   let returnFocus;
   let resumeHero = false;
   function resumeBackground() {
     if (
       heroVisible &&
-      !manuallyPaused &&
       !reduceMotion.matches &&
       !connection?.saveData &&
       !document.hidden &&

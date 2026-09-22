@@ -117,15 +117,7 @@
         <div class="hero-bottom wrap">
           <a href="#portfolio" class="explore"
             >EXPLORE OUTRAS PERSPECTIVAS <span aria-hidden="true">↓</span></a
-          ><button
-            id="video-toggle"
-            class="video-toggle"
-            type="button"
-            aria-label="Reproduzir vídeo de fundo"
           >
-            <span class="video-symbol" aria-hidden="true">▶</span
-            ><span class="video-state">Reproduzir fundo</span>
-          </button>
         </div>
       </section>
       <section
@@ -143,83 +135,123 @@
               espaços, histórias e movimento em experiências visuais.
             </p>
           </div>
-          <button
-            class="reel-cover"
-            type="button"
-            data-film
-            data-start="0"
-            aria-label="Assistir ao showreel completo da Midnight Aerials"
-          >
-            <img
-              src="frame-18.webp"
-              width="1600"
-              height="900"
-              alt="Voo sobre um palco com fogos de artifício e público"
-              loading="lazy"
-            /><span class="reel-topline"
-              ><span>MIDNIGHT AERIALS / SHOWREEL</span><span>01:00</span></span
-            ><span class="play-circle" aria-hidden="true">▶</span
-            ><span class="reel-bottomline"
-              ><span
-                >APERTE O PLAY.<br /><strong>MUDE DE PERSPECTIVA.</strong></span
-              ><span class="circle-arrow" aria-hidden="true">↗</span></span
-            >
-          </button>
-          <div class="film-strip" aria-label="Cenas do showreel">
-            <button
-              type="button"
-              data-film
-              data-start="1"
-              aria-label="Ver cena de arquitetura no showreel"
-            >
-              <span class="film-image"
-                ><img
-                  src="frame-02.webp"
-                  width="1600"
-                  height="900"
-                  loading="lazy"
-                  alt="Mergulho FPV entre edifícios" /></span
-              ><span class="film-caption"
-                ><span>01 — Arquitetura & espaços</span
-                ><span aria-hidden="true">↗</span></span
-              >
+          <div class="portfolio-categories" role="tablist" aria-label="Categorias do portfólio">
+            <button class="portfolio-filter is-active" type="button" role="tab" aria-selected="true" data-category="all">
+              Tudo
             </button>
-            <button
-              type="button"
-              data-film
-              data-start="7"
-              aria-label="Ver cena de movimento no showreel"
-            >
-              <span class="film-image"
-                ><img
-                  src="frame-07.webp"
-                  width="1600"
-                  height="900"
-                  loading="lazy"
-                  alt="Voo entre embarcações ao pôr do sol" /></span
-              ><span class="film-caption"
-                ><span>02 — Movimento & liberdade</span
-                ><span aria-hidden="true">↗</span></span
-              >
+            <button class="portfolio-filter" type="button" role="tab" aria-selected="false" data-category="architecture">
+              Arquitetura & espaços
             </button>
-            <button
-              type="button"
-              data-film
-              data-start="25"
-              aria-label="Ver cena de shows no showreel"
-            >
-              <span class="film-image"
-                ><img
-                  src="frame-25.webp"
-                  width="1600"
-                  height="900"
-                  loading="lazy"
-                  alt="Perspectiva aérea de um festival à noite" /></span
-              ><span class="film-caption"
-                ><span>03 — Shows & experiências</span
-                ><span aria-hidden="true">↗</span></span
-              >
+            <button class="portfolio-filter" type="button" role="tab" aria-selected="false" data-category="movement">
+              Movimento & liberdade
             </button>
+            <button class="portfolio-filter" type="button" role="tab" aria-selected="false" data-category="shows">
+              Shows & experiências
+            </button>
+          </div>
+          <div class="portfolio-reel">
+            <button
+              class="reel-nav reel-nav-prev"
+              type="button"
+              data-carousel="prev"
+              aria-label="Ver trabalhos anteriores"
+            >‹</button>
+            <div class="film-strip" aria-label="Portfólio audiovisual">
+              <button
+                class="film-card"
+                type="button"
+                data-film
+                data-category="shows"
+                data-start="0"
+                aria-label="Assistir ao showreel completo da Midnight Aerials"
+              >
+                <span class="film-image">
+                  <img
+                    src="frame-18.webp"
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                    alt="Voo sobre um palco com fogos de artifício e público"
+                  />
+                  <span class="film-caption">
+                    <span class="film-title">Showreel / Midnight Aerials</span>
+                    <span class="film-arrow" aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </button>
+              <button
+                class="film-card"
+                type="button"
+                data-film
+                data-category="architecture"
+                data-start="1"
+                aria-label="Ver cena de arquitetura no showreel"
+              >
+                <span class="film-image">
+                  <img
+                    src="frame-02.webp"
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                    alt="Mergulho FPV entre edifícios"
+                  />
+                  <span class="film-caption">
+                    <span class="film-title">01 — Arquitetura & espaços</span>
+                    <span class="film-arrow" aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </button>
+              <button
+                class="film-card"
+                type="button"
+                data-film
+                data-category="movement"
+                data-start="7"
+                aria-label="Ver cena de movimento no showreel"
+              >
+                <span class="film-image">
+                  <img
+                    src="frame-07.webp"
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                    alt="Voo entre embarcações ao pôr do sol"
+                  />
+                  <span class="film-caption">
+                    <span class="film-title">02 — Movimento & liberdade</span>
+                    <span class="film-arrow" aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </button>
+              <button
+                class="film-card"
+                type="button"
+                data-film
+                data-category="shows"
+                data-start="25"
+                aria-label="Ver cena de shows no showreel"
+              >
+                <span class="film-image">
+                  <img
+                    src="frame-25.webp"
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                    alt="Perspectiva aérea de um festival à noite"
+                  />
+                  <span class="film-caption">
+                    <span class="film-title">03 — Shows & experiências</span>
+                    <span class="film-arrow" aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </button>
+            </div>
+            <button
+              class="reel-nav reel-nav-next"
+              type="button"
+              data-carousel="next"
+              aria-label="Ver próximos trabalhos"
+            >›</button>
           </div>
         </div>
       </section>
@@ -242,6 +274,7 @@
             <article class="service">
               <div class="service-image">
                 <img
+                  class="fpv-photo"
                   src="fpv-640.webp"
                   srcset="
                     fpv-640.webp   640w,
@@ -266,7 +299,60 @@
                 href="https://wa.me/5561999405674?text=Ol%C3%A1%2C%20Matheus!%20Quero%20conversar%20sobre%20uma%20filmagem%20FPV."
                 target="_blank"
                 rel="noopener noreferrer"
-                >Criar com FPV <span aria-hidden="true">↗</span></a
+              >Criar com FPV <span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="service">
+              <div class="service-image">
+                <img
+                  class="sub250-photo"
+                  src="fpv-sub250.jpg"
+                  width="4000"
+                  height="2252"
+                  alt="Drone FPV Sub 250g com proteção nas hélices e câmera de ação"
+                  loading="lazy"
+                />
+              </div>
+              <p class="eyebrow service-tag">LEVEZA & ACESSO</p>
+              <h3>FPV Sub 250g</h3>
+              <p>
+                Drone FPV abaixo de 250 g, compacto e protegido, pensado para
+                operações em locais com restrições ou maior circulação de
+                pessoas. Leveza e agilidade para voos que exigem mais controle
+                e segurança.
+              </p>
+              <a
+                class="text-link"
+                href="https://wa.me/5561999405674?text=Ol%C3%A1%2C%20Matheus!%20Quero%20conversar%20sobre%20uma%20filmagem%20com%20FPV%20Sub%20250g."
+                target="_blank"
+                rel="noopener noreferrer"
+                >Conhecer o Sub 250g <span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="service">
+              <div class="service-image">
+                <img
+                  class="dji-photo"
+                  src="dji-classic-crop-1200.jpg"
+                  width="1200"
+                  height="1800"
+                  alt="Drone DJI voando sobre uma paisagem natural"
+                  loading="lazy"
+                />
+              </div>
+              <p class="eyebrow service-tag">ESTABILIDADE & PAISAGEM</p>
+              <h3>DJI clássico</h3>
+              <p>
+                Drones estabilizados para capturar paisagens, espaços e
+                movimentos com suavidade. É quase como colocar uma câmera em um
+                tripé — só que voando.
+              </p>
+              <a
+                class="text-link"
+                href="https://wa.me/5561999405674?text=Ol%C3%A1%2C%20Matheus!%20Quero%20conversar%20sobre%20uma%20filmagem%20com%20drone%20DJI."
+                target="_blank"
+                rel="noopener noreferrer"
+                >Filmar com DJI <span aria-hidden="true">↗</span></a
               >
             </article>
             <article class="service">
@@ -303,6 +389,37 @@
             <article class="service">
               <div class="service-image">
                 <img
+                  class="custom-photo"
+                  src="custom-640.webp"
+                  srcset="
+                    custom-640.webp   640w,
+                    custom-1200.webp 1200w
+                  "
+                  sizes="(max-width: 760px) 90vw, 30vw"
+                  width="1200"
+                  height="803"
+                  alt="Drone preparado para uma transmissão ao vivo"
+                  loading="lazy"
+                />
+              </div>
+              <p class="eyebrow service-tag">FPV + DJI EM TEMPO REAL</p>
+              <h3>Transmissão ao vivo</h3>
+              <p>
+                Unimos a agilidade do FPV à estabilidade dos drones DJI para
+                criar transmissões ao vivo mais dinâmicas, com movimentos
+                rápidos e enquadramentos amplos em tempo real.
+              </p>
+              <a
+                class="text-link"
+                href="https://wa.me/5561999405674?text=Ol%C3%A1%2C%20Matheus!%20Quero%20conversar%20sobre%20uma%20transmiss%C3%A3o%20ao%20vivo%20com%20drone."
+                target="_blank"
+                rel="noopener noreferrer"
+                >Levar o voo para o ao vivo <span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="service">
+              <div class="service-image">
+                <img
                   class="live-drone-photo"
                   src="live-drone-front-640.webp"
                   srcset="
@@ -312,23 +429,24 @@
                   sizes="(max-width: 760px) 90vw, 30vw"
                   width="2252"
                   height="4000"
-                  alt="Drone com câmera e gimbal sobre um deck à beira do lago"
+                  alt="Drone com câmera e gimbal preparado para um projeto especial"
                   loading="lazy"
                 />
               </div>
-              <p class="eyebrow service-tag">AO VIVO & SOB MEDIDA</p>
+              <p class="eyebrow service-tag">PROJETOS ESPECIAIS</p>
               <h3>Além do convencional</h3>
               <p>
-                Transmissões ao vivo com drones DJI e FPV, configurações com
-                gimbal e soluções personalizadas. O projeto define o desafio; a
-                engenharia abre as possibilidades.
+                Criamos soluções sob medida para projetos fora do comum. Unimos
+                pilotagem, engenharia e criatividade para tirar do papel o que
+                for preciso. O projeto define o desafio; a engenharia abre as
+                possibilidades.
               </p>
               <a
                 class="text-link"
-                href="https://wa.me/5561999405674?text=Ol%C3%A1%2C%20Matheus!%20Tenho%20um%20projeto%20personalizado%20para%20conversarmos."
+                href="https://wa.me/5561999405674?text=Ol%C3%A1%2C%20Matheus!%20Tenho%20um%20projeto%20fora%20do%20comum%20para%20conversarmos."
                 target="_blank"
                 rel="noopener noreferrer"
-                >Conversar sobre a ideia <span aria-hidden="true">↗</span></a
+                >Tirar a ideia do papel <span aria-hidden="true">↗</span></a
               >
             </article>
           </div>
@@ -374,6 +492,7 @@
               desenvolver soluções para produções complexas — sempre em sintonia
               com o que a sua história precisa contar.
             </p>
+            <p class="pilot-motto"><strong>O céu não é o limite.</strong></p>
             <div class="pilot-actions">
             <a href="#contato" class="text-link"
               >Vamos tirar sua ideia do papel
@@ -394,6 +513,47 @@
                 <span>@matheus.fpv</span>
                 <span aria-hidden="true">↗</span>
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="clients light-section" id="clientes" aria-labelledby="clients-title">
+        <div class="wrap clients-bar">
+          <h2 class="clients-title" id="clients-title">CLIENTES ATENDIDOS</h2>
+          <div class="client-logo-carousel" aria-label="Carrossel de logos de clientes atendidos">
+            <div class="client-logo-track">
+              <div class="client-logo-set">
+                <span class="client-logo"><img src="client-porsche.png" alt="Porsche" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-red-bull.png" alt="Red Bull" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-client-a.png" alt="Zik Noronha" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-na-praia.png" alt="Na Praia Festival" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-client-black-01.png" alt="TRK Imóveis" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-client-black-02.png" alt="Todo Mundo no Rio" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-zz.png" alt="ZZ" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-r2-com-vc.png" alt="R2 com.vc" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-funn-black.png" alt="Funn" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-bonus-track.png" alt="Bônus Track" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-carvalheira-na-ladeira.png" alt="Carvalheira na Ladeira" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-hot-wheels-monster-trucks.png" alt="Hot Wheels Monster Trucks Live" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-capital-moto-week.png" alt="Capital Moto Week" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-ironman.png" alt="Ironman" loading="lazy" /></span>
+              </div>
+              <div class="client-logo-set" aria-hidden="true">
+                <span class="client-logo"><img src="client-porsche.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-red-bull.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-client-a.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-na-praia.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-client-black-01.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-client-black-02.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-zz.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-r2-com-vc.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-funn-black.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-bonus-track.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-carvalheira-na-ladeira.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-hot-wheels-monster-trucks.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-capital-moto-week.png" alt="" loading="lazy" /></span>
+                <span class="client-logo"><img src="client-ironman.png" alt="" loading="lazy" /></span>
+              </div>
             </div>
           </div>
         </div>
